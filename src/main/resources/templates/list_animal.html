@@ -21,7 +21,7 @@
         <td th:text="${animal.getColor()}"></td>
         <td th:text="${animal.getSex()}"></td>
         <td th:text="${animal.getSpecie().getCommonName()}"></td>
-        <td><a th:href="@{/animal/delete/(id=${animal.getId()})}">DELETE</a><a th:href="@{/animal/update/(id=${animal.getId()})}">UPDATE</a></td>
+        <td><a th:href="@{/animal/delete/(id=${animal.getId()})}">DELETE</a><a th:href="@{'/animal/'+${animal.getId()}}">UPDATE</a></td>
     </tr>
 </table>
 <a th:href="@{/animal/0}">Créer un animal</a>

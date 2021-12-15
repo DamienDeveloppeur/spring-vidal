@@ -36,25 +36,9 @@ public class SpecieController {
 
     @GetMapping("/{id}")
     public String createOrUpdate(@PathVariable("id") long id, Model model){
-        System.out.println("HERE");
         Specie sp = null;
-        if(id == 0L) {
-            sp = new Specie();
-
-        } else {
-            sp = specieService.get(id);
-        }
-        model.addAttribute("specie", sp);
-        return "create_specie";
-    }
-    @GetMapping("/update")
-    public String update(@RequestParam("id") long id, Model model) {
-        Specie sp = null;
-        if(id == 0L) {
-            sp = new Specie();
-        } else {
-            sp = specieService.get(id);
-        }
+        if(id == 0L) sp = new Specie();
+        else sp = specieService.get(id);
         model.addAttribute("specie", sp);
         return "create_specie";
     }
@@ -62,15 +46,9 @@ public class SpecieController {
     @Transactional
     @PostMapping("")
     public String createOrUpdate(Specie sp, BindResult result, Model model){
-        System.out.println(sp);
-        if(sp.getId() == null || sp.getId() == 0L) {
-            System.out.println("HERE");
-            specieService.create(sp);
-        } else {
-            specieService.update(sp);
-        }
+        if(sp.getId() == null || sp.getId() == 0L) specieService.create(sp);
+        else specieService.update(sp);
         return "redirect:/specie";
     }
-
 
 }

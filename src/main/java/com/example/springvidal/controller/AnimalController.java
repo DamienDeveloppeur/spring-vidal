@@ -33,42 +33,17 @@ public class AnimalController {
     @GetMapping("/{id}")
     public String create(@PathVariable("id") long id, Model model) {
         Animal anim = null;
-        if(id == 0L) {
-            anim = new Animal();
-
-        } else {
-            anim = animalsService.get(id);
-        }
-        int i =1;
-        Long L = new Long(i);
-
+        if(id == 0L) anim = new Animal();
+        else anim = animalsService.get(id);
         model.addAttribute("animal", anim);
-        model.addAttribute("species", specieService.list());
-        return "create_animal";
-    }
-
-    @GetMapping("/update")
-    public String update(@RequestParam("id") long id, Model model) {
-        Animal sp = null;
-        if(id == 0L) {
-            sp = new Animal();
-        } else {
-            sp = animalsService.get(id);
-        }
-        model.addAttribute("animal", sp);
         model.addAttribute("species", specieService.list());
         return "create_animal";
     }
 
     @PostMapping("")
     public String create(Animal sp, BindResult result, Model model){
-        System.out.println(sp);
-        if(sp.getId() == null || sp.getId() == 0L) {
-            System.out.println("HERE");
-            animalsService.create(sp);
-        } else {
-            animalsService.update(sp);
-        }
+        if(sp.getId() == null || sp.getId() == 0L) animalsService.create(sp);
+        else animalsService.update(sp);
         return "redirect:/animal";
     }
 
