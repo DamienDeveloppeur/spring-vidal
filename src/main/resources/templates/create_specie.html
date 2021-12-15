@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <h2>Ajouter une espèce</h2>
+    <form th:object="${specie}" th:action="@{/specie}" method="post">
+        <div class="group">
+            <label>Nom de l'espèce</label>
+            <input type="text" th:field="*{commonName}">
+        </div>
+        <div class="group">
+            <label>Nom latin</label>
+            <input type="text" th:field="*{latinName}">
+        </div>
+        <input type="submit" class="button" value="Sauver"/>&nbsp;
+        <input type="hidden" th:field="*{id}"/>&nbsp;
+        <input type="button" class="button" value="Retour" onclick="window.location='/specie'"/>&nbsp;
+    </form>
+</section>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+
+
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <link rel="stylesheet" th:href="@{/resources/css/main.css}"/>-->
+<!--    <meta charset="utf-8">-->
+<!--</head>-->
+
+
+
+<!--<body>-->
+<!--<form th:object="${specie}" th:action="@{/specie/do}" method="get">-->
+<!--    <table>-->
+<!--        <tr><td><span>Nom Commun</span> : </td><td>-->
+<!--            <input type="text" th:field="*{commonName}"/>&nbsp;<span th:if="${#fields.hasErrors('commonName')}" th:errors="*{commonName}" class="errorText">Error</span>-->
+<!--        </td></tr>-->
+<!--        <tr><td><span>Nom latin</span> : </td><td>-->
+<!--            <input type="text" th:field="*{latinName}"/>&nbsp;<span th:if="${#fields.hasErrors('latinName')}" th:errors="*{latinName}" class="errorText">Error</span>-->
+<!--        </td></tr>-->
+<!--    </table>-->
+<!--    <p></p>-->
+<!--    <input type="submit" class="button" value="Sauver"/>&nbsp;-->
+<!--    <input type="hidden" th:field="*{id}"/>&nbsp;-->
+<!--    <input type="button" class="button" value="Retour" onclick="window.location='/specie'"/>&nbsp;-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

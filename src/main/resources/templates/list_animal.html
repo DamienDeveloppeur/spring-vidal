@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Animal</title>
+    <link rel="stylesheet"  th:href="@{/style.css}">
 </head>
 <body>
-
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Color</th>
+        <th>Sex</th>
+        <th>Espéce</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="animal: ${animals}">
+        <td th:text="${animal.getId()}"></td>
+        <td th:text="${animal.getName()}"></td>
+        <td th:text="${animal.getColor()}"></td>
+        <td th:text="${animal.getSex()}"></td>
+        <td th:text="${animal.getSpecie().getCommonName()}"></td>
+        <td><a th:href="@{/animal/delete/(id=${animal.getId()})}">DELETE</a><a th:href="@{/animal/update/(id=${animal.getId()})}">UPDATE</a></td>
+    </tr>
+</table>
+<a th:href="@{/animal/0}">Créer un animal</a>
+<h1><a th:href="@{/}">Revenir vers l'accueil </a></h1>
 </body>
 </html>

@@ -18,8 +18,10 @@
         <td th:text="${specie.getId()}"></td>
         <td th:text="${specie.getCommonName()}"></td>
         <td th:text="${specie.getLatinName()}"></td>
-        <td><a th:href="@{/delete/(id=${specie.getId()})}">DELETE</a></td>
+        <td><a th:href="@{/specie/delete/(id=${specie.getId()})}">DELETE</a><a th:href="@{/specie/update/(id=${specie.getId()})}">UPDATE</a></td>
     </tr>
 </table>
+<a th:href="@{/specie/0}">Créer une espéce</a>
+<h1><a th:href="@{/}">Revenir vers l'accueil </a></h1>
 </body>
 </html>

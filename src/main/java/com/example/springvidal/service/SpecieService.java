@@ -21,7 +21,7 @@ public class SpecieService {
         return (List<Specie>)specierepo.findAll();
     }
 
-    public Specie findbyId(Long id) {
+    public Specie get(Long id) {
         return this.specierepo.findById(id).orElse(null);
     }
 
@@ -29,6 +29,7 @@ public class SpecieService {
         if (specie.getId() != null) {
             throw new RuntimeException("id de l'entité doit être null");
         }
+        //specie = this.specierepo.save(specie);
         return this.specierepo.save(specie);
     }
 

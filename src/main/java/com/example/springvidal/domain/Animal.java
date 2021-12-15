@@ -24,6 +24,41 @@ public class Animal {
     @JoinColumn(name = "id_specie")
     private Specie specie;
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", sex='" + sex + '\'' +
+                ", specie=" + specie +
+                '}';
+    }
+
+    public Animal(String name, String color, String sex) {
+        this.name = name;
+        this.color = color;
+        this.sex = sex;
+    }
+    public Animal(){
+
+    }
+    public Animal(Long id, String name, String color, String sex, Specie specie) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
+        this.sex = sex;
+        this.specie = specie;
+    }
+
+    public Animal(String name, String color, String sex, Specie specie) {
+        super();
+        this.name = name;
+        this.color = color;
+        this.sex = sex;
+        this.specie = specie;
+    }
+
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}

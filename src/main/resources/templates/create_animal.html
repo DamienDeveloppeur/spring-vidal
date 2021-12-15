@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <h2>Ajouter une espèce</h2>
+    <form th:object="${animal}" th:action="@{/animal}" method="post">
+        <div class="group">
+            <label>Nom de l'animal</label>
+            <input type="text" th:field="*{name}">
+        </div>
+        <div class="group">
+            <label>Couleur</label>
+            <input type="text" th:field="*{color}">
+        </div>
+        <div class="group">
+            <label>Sexe</label>
+            <input type="text" th:field="*{sex}">
+        </div>
+        <div class="group">
+            <select th:field="*{specie}">
+                <option th:each="sp: ${species}" th:value="${sp.id}" th:utext="${sp.getCommonName()}"></option>
+            </select>
+        </div>
+
+
+        <input type="submit" class="button" value="Sauver"/>&nbsp;
+        <input type="hidden" th:field="*{id}"/>&nbsp;
+        <input type="button" class="button" value="Retour" onclick="window.location='/specie'"/>&nbsp;
+    </form>
+</section>
+</body>
+</html>
